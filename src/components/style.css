@@ -1,0 +1,63 @@
+.place-container {
+    display: flex;
+    width: 100%;
+    padding: 1%;
+}
+
+.place-list {
+    width: 20%;
+    background-color: aliceblue;
+    padding: 1%;
+    border: 2px solid darkgrey;
+    color: blue;
+    cursor: pointer;
+    height: 700px;
+    overflow: scroll;
+}
+
+.place-details {
+    margin-left: 10px;
+    background-color: aliceblue;
+    padding: 1%;
+    border: 2px solid darkgrey;
+}
+
+.details {
+    align-items: center;
+    display: flex;
+}
+
+.header {
+    text-align: center;
+    width: 100%;
+    padding: 1%;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color: #6C6666;
+}
+
+.eachDiv {
+    width: 15%;
+    text-align: center;
+}
+
+.descDiv {
+    width: 40%;
+    text-align: center;
+}
+
+.addFav {
+    background-color: green;
+    width: 5%;
+    margin-left: 5%;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 1px;
+}
+
+.fav-places {
+    margin-left: 10px;
+    padding: 1%;
+    margin-top: 5%;
+}
