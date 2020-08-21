@@ -1,4 +1,5 @@
 import PlacesList from './places';
+import ContactList from './contacts';
 
 // method to get all the place list
 export const getPlaceList = () => ({
@@ -17,5 +18,11 @@ export const getPlaceById = id => ({
 export const addFavourite = placeName => ({
     type: 'ADD_FAVOURITE',
     placeName,
+});
+
+// method to fetch contact details
+export const getContactList = () => ({
+    type: 'GET_CONTACTS',
+    contacts: ContactList,
 });
 

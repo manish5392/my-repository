@@ -23,6 +23,11 @@ const places = (state = [], action) => {
             ...state,
             favouriteList: action.placeName
         }
+    case 'GET_CONTACTS':
+        return {
+            ...state,
+            contacts: action.contacts
+        }
     default:
       return state
   }

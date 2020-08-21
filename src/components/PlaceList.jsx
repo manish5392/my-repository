@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PlaceDetails from './PlaceDetails';
-import './style.css';
+import DatePicker from 'react-datepicker';
+// import './style.css';
 
 export default class PlaceList extends Component {
 
     static propTypes = {
         places: PropTypes.arrayOf(PropTypes.object),
         placeDetails: PropTypes.oneOfType([PropTypes.object]),
+        contacts: PropTypes.oneOfType([PropTypes.object]),
         favouriteList: PropTypes.string,
         getPlaceList: PropTypes.func,
+        getContactList: PropTypes.func,
         getPlaceById: PropTypes.func,
         addFavourite: PropTypes.func,
     }
 
     static defaultProps = {
         places: [],
+        contacts: [],
         favouriteList: '',
         placeDetails: {},
     }
@@ -23,10 +27,12 @@ export default class PlaceList extends Component {
     state = {
         showDetails: false,
         storeFavList: [],
+        startDate: new Date(),
     }
 
     componentDidMount() {
         this.props.getPlaceList();
+        this.props.getContactList();
     }
 
     tempFav = [];
@@ -39,13 +45,25 @@ export default class PlaceList extends Component {
     }
 
     render() {
-      const { places, placeDetails } = this.props;
+      const { places, placeDetails, contacts } = this.props;
       const { showDetails, storeFavList } = this.state;
 
       return (
           <div>
-              <div className="header">Beautiful places in india to explore!</div>
-              <div className="place-container">
+              <div>
+                  <DatePicker selected={this.state.startDate} onCahnge={this.selectDate} />
+              </div>
+              <div>
+                  {
+                      contacts.map((contact, index) =>
+                        <div style={{ display: 'flex' }}>
+                            <div>{contact.name}</div>
+                            <div style={{ marginLeft: '20px' }}>{contact.number}</div>
+                        </div>
+                      )
+                  }
+              </div>
+              {/*<div className="place-container">
                   <div className="place-list">
                       <span style={{ color: '#000000', cursor: 'auto' }}>Click on any place name for details.</span>
                       {places.map((place, index) =>
@@ -67,7 +85,7 @@ export default class PlaceList extends Component {
                           </div>
                       </div>
                   }
-              </div>
+              </div>*/}
           </div>
       )
     }
@@ -81,6 +99,11 @@ export default class PlaceList extends Component {
     // this method is for adding place to favourite list
     addFavouriteCB = name => {
         this.props.addFavourite(name);
+    }
+
+    selectDate = date => {
+        console.log(date);
+        this.setState({ startDate: date });
     }
 }
 
